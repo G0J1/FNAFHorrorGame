@@ -337,6 +337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bd45431c776074295c253cb449207a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  fppCamera: {fileID: 7370312013965164153}
+  inputActions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
 --- !u!1 &3374352252574619385
 GameObject:
   m_ObjectHideFlags: 0

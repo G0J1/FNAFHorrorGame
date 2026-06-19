@@ -5,26 +5,40 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    //public Camera camera;
-    //public InputActionAsset inputActions;
+    public Camera fppCamera;
+    public InputActionAsset inputActions;
+   
 
-    //private InputAction m_look;
+    private GameObject[] securityCams;
+    // private int camIndex = 0;
 
-    //private void OnEnable()
-    //{
-    //    inputActions.FindActionMap("Player").Enable();
-    //}
+    private InputAction ia_camUp;
 
-    //private void OnDisable()
-    //{
-    //    inputActions.FindActionMap("Player").Disable();
-    //}
+    private void OnEnable()
+    {
+        inputActions.FindActionMap("Player").Enable();
+    }
+
+    private void OnDisable()
+    {
+        inputActions.FindActionMap("Player").Disable();
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //m_look = InputSystem.actions.FindAction("Look");
+        fppCamera.enabled = true;
+
         Cursor.visible = true;
+
+        //securityCams = GameObject.FindGameObjectsWithTag("Cam");
+        //Debug.Log(securityCams.Length);
+
+        //ia_camUp = InputSystem.actions.FindActionMap("Player").FindAction("CamUp");
+        //ia_camUp.performed += CamUp;
+        //ia_camUp.Enable();
+
+       
     }
 
     // Update is called once per frame
@@ -32,4 +46,21 @@ public class PlayerController : MonoBehaviour
     {
         
     }
+
+    //private void CamUp(InputAction.CallbackContext context)
+    //{
+    //    Debug.Log("increasing cam active!");
+    //    fppCamera.enabled = false;
+    //    if (securityCams[camIndex] != null)
+    //    {
+    //        if (camIndex > 0)
+    //        {
+    //            securityCams[camIndex - 1].GetComponent<Camera>().enabled = false;
+    //        }
+    //        securityCams[camIndex].GetComponent<Camera>().enabled = true;
+    //    }
+        
+
+    //    camIndex++;
+    //}
 }
