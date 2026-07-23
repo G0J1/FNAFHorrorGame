@@ -21,7 +21,16 @@ public class RustyController : MonoBehaviour
 
     private void IncrementLocation()
     {
-        Location nextLocation = currentLocation.GetComponent<Location>().nextLocations[0];
+        Location[] possibleLocations = currentLocation.GetComponent<Location>().nextLocations;
+        Location nextLocation = currentLocation;
+        if (possibleLocations.Length == 1)
+        {
+            nextLocation = currentLocation.GetComponent<Location>().nextLocations[0];
+        }
+        else if (possibleLocations.Length > 1)
+        {
+            nextLocation = possibleLocations[ChooseRandomLocation(possibleLocations.Length)];
+        }
         if (nextLocation != null)
         {
             gameObject.transform.position = nextLocation.transform.position;
@@ -43,6 +52,12 @@ public class RustyController : MonoBehaviour
     {
         return Random.Range(4.5f, 6.5f);
     }
+
+    private int ChooseRandomLocation(int size)
+    {
+        return Random.Range(0, size);
+    }
+
 
     private void IncrementAILevel()
     {
