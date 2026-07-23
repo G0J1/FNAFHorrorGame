@@ -9,7 +9,8 @@ public class RustyController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        InvokeRepeating(nameof(IncrementLocation), 5.0f, 5.0f);  
+        InvokeRepeating(nameof(BeginMovementAction), GenerateRandomTime(), GenerateRandomTime());
+        InvokeRepeating(nameof(IncrementAILevel), 20.0f, 20.0f);
     }
 
     // Update is called once per frame
@@ -27,5 +28,24 @@ public class RustyController : MonoBehaviour
             currentLocation = nextLocation;
         }
         
+    }
+    
+    private void BeginMovementAction()
+    {
+        int movementCheck = Random.Range(0, 20);
+        if (movementCheck <= aILevel)
+        {
+            IncrementLocation();
+        }
+    }
+
+    private float GenerateRandomTime()
+    {
+        return Random.Range(4.5f, 6.5f);
+    }
+
+    private void IncrementAILevel()
+    {
+        ++aILevel;
     }
 }

@@ -10880,7 +10880,7 @@ PrefabInstance:
     - target: {fileID: 3933358099824144544, guid: 783b889fb5c2c714d8ef5e8660eb565a, type: 3}
       propertyPath: 'nextLocations.Array.data[0]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 24905312}
     - target: {fileID: 4945079659811710976, guid: 783b889fb5c2c714d8ef5e8660eb565a, type: 3}
       propertyPath: m_Name
       value: Location8
