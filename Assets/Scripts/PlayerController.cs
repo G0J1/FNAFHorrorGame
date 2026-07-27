@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private GameObject[] securityCams;
     // private int camIndex = 0;
 
-    private InputAction ia_camUp;
+    // private InputAction ia_camUp;
     private InputAction ia_click;
 
     private void OnEnable()
