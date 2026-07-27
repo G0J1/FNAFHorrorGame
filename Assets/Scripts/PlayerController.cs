@@ -73,7 +73,14 @@ public class PlayerController : MonoBehaviour
     private void Click(InputAction.CallbackContext context)
     {
         Debug.Log("Click!");
-
+        RaycastHit hit;
+        Vector2 mousePos = Mouse.current.position.value;
+        Ray rayOrign = Camera.main.ScreenPointToRay(mousePos);
+        if (Physics.Raycast(rayOrign, out hit))
+        {
+            string hitObject = hit.collider.gameObject.name;
+            Debug.Log("Hit object: " + hitObject);
+        }
 
     }
 }
