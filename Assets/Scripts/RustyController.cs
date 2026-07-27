@@ -12,19 +12,35 @@ public class RustyController : MonoBehaviour
     public Location currentLocation;
     public RustyPhase currentPhase;
 
+    [SerializeField] private GameObject startingPos;
     [SerializeField] private int aILevel = 0;
+    [SerializeField] private PlayerController player;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartNextMovementTimer();
         InvokeRepeating(nameof(IncrementAILevel), 20.0f, 20.0f);
-        currentPhase = RustyPhase.MovementPhase;
+        ResetPosition();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void GetTazed()
+    {
+        ResetPosition();
+        CancelInvoke(nameof(Jumpscare));
+    }
+
+    public void ResetPosition()
+    {
+        currentPhase = RustyPhase.MovementPhase;
+        currentLocation = startingPos.GetComponent<Location>();
+        gameObject.transform.position = startingPos.transform.position;
+        Invoke(nameof(StartNextMovementTimer), 10.0f);
     }
 
     private void StartNextMovementTimer()
@@ -66,6 +82,7 @@ public class RustyController : MonoBehaviour
         if (currentLocation.CompareTag("AttackLocation"))
         {
             currentPhase = RustyPhase.AttackPhase;
+            Invoke(nameof(Jumpscare), 10.0f);
         }
 
     }
@@ -92,6 +109,12 @@ public class RustyController : MonoBehaviour
 
 
         
+    }
+
+    private void Jumpscare()
+    {
+        Debug.Log("JUMPSCARE!!!!!");
+        player.CameraLookBehind(0.5f);
     }
 
     private float GenerateRandomTime()

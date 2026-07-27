@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1121491456985979182}
-  m_LocalEulerAnglesHint: {x: 6.912, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 6.95, y: 32.076, z: 0}
 --- !u!114 &3936305730618880576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,7 +315,7 @@ Transform:
   m_GameObject: {fileID: 2793960896689980377}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.48584, y: 0, z: 4.57995}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -339,6 +339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   fppCamera: {fileID: 7370312013965164153}
   inputActions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
+  cmCamera: {fileID: 3936305730618880576}
 --- !u!1 &3374352252574619385
 GameObject:
   m_ObjectHideFlags: 0

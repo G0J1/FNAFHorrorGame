@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public Camera fppCamera;
     public InputActionAsset inputActions;
+    public CinemachineCamera cmCamera;
    
 
     private GameObject[] securityCams;
@@ -86,5 +88,20 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+    }
+
+    public void CameraLookBehind(float rotSpeed)
+    {
+        cmCamera.enabled = false;
+        inputActions.FindActionMap("Player").Disable();
+        Cursor.lockState = CursorLockMode.Locked;
+        fppCamera.transform.localRotation = Quaternion.Euler(0f, -145.08f, 0f);
+    }
+    public void CameraLookFront(float rotSpeed)
+    {
+        cmCamera.enabled = true;
+        inputActions.FindActionMap("Player").Enable();
+        Cursor.lockState = CursorLockMode.None;
+        fppCamera.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
     }
 }
