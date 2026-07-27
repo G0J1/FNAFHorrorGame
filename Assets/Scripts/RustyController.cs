@@ -35,6 +35,10 @@ public class RustyController : MonoBehaviour
         {
             gameObject.transform.position = nextLocation.transform.position;
             currentLocation = nextLocation;
+            if (currentLocation.CompareTag("AttackLocation"))
+            {
+
+            }
         }
         
     }

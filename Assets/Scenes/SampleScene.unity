@@ -177,7 +177,7 @@ PrefabInstance:
       objectReference: {fileID: 1910068492}
     - target: {fileID: 4945079659811710976, guid: 783b889fb5c2c714d8ef5e8660eb565a, type: 3}
       propertyPath: m_Name
-      value: Location7
+      value: Location7Off1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -764,7 +764,7 @@ PrefabInstance:
       objectReference: {fileID: 12740473}
     - target: {fileID: 4945079659811710976, guid: 783b889fb5c2c714d8ef5e8660eb565a, type: 3}
       propertyPath: m_Name
-      value: Location5
+      value: Location5Lockers
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1683,7 +1683,7 @@ PrefabInstance:
       objectReference: {fileID: 806421242}
     - target: {fileID: 4945079659811710976, guid: 783b889fb5c2c714d8ef5e8660eb565a, type: 3}
       propertyPath: m_Name
-      value: Location4
+      value: Location4PartsNService
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2337,7 +2337,7 @@ MonoBehaviour:
     Generation: 75
 --- !u!1 &401725885
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2355,7 +2355,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &401725886
 Transform:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2370,7 +2370,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &401725887
 MeshCollider:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -3531,7 +3531,7 @@ PrefabInstance:
       objectReference: {fileID: 806421242}
     - target: {fileID: 4945079659811710976, guid: 783b889fb5c2c714d8ef5e8660eb565a, type: 3}
       propertyPath: m_Name
-      value: Location3
+      value: Location3Backdoor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3887,7 +3887,11 @@ PrefabInstance:
       objectReference: {fileID: 24905312}
     - target: {fileID: 4945079659811710976, guid: 783b889fb5c2c714d8ef5e8660eb565a, type: 3}
       propertyPath: m_Name
-      value: Location9
+      value: Location9Off3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945079659811710976, guid: 783b889fb5c2c714d8ef5e8660eb565a, type: 3}
+      propertyPath: m_TagString
+      value: AttackLocation
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4998,7 +5002,7 @@ PrefabInstance:
       objectReference: {fileID: 1824949885}
     - target: {fileID: 4945079659811710976, guid: 783b889fb5c2c714d8ef5e8660eb565a, type: 3}
       propertyPath: m_Name
-      value: Location2
+      value: Location2Registers
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5079,7 +5083,7 @@ PrefabInstance:
       objectReference: {fileID: 12740473}
     - target: {fileID: 4945079659811710976, guid: 783b889fb5c2c714d8ef5e8660eb565a, type: 3}
       propertyPath: m_Name
-      value: Location6
+      value: Location6Dining
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8122,7 +8126,7 @@ MonoBehaviour:
     Generation: 118
 --- !u!1 &1417375912
 GameObject:
-  m_ObjectHideFlags: 3
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -8139,7 +8143,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &1417375913
 Transform:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -8156,7 +8160,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1417375914
 MonoBehaviour:
-  m_ObjectHideFlags: 27
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9483,7 +9487,7 @@ MonoBehaviour:
   CustomBlends: {fileID: 0}
 --- !u!1 &1569147796
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9502,7 +9506,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &1569147797
 Transform:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9517,7 +9521,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1569147798
 MeshRenderer:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9566,7 +9570,7 @@ MeshRenderer:
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1569147799
 MeshFilter:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -11029,7 +11033,7 @@ PrefabInstance:
       objectReference: {fileID: 1302839605}
     - target: {fileID: 4945079659811710976, guid: 783b889fb5c2c714d8ef5e8660eb565a, type: 3}
       propertyPath: m_Name
-      value: Location8
+      value: Location8Off2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11921,7 +11925,7 @@ PrefabInstance:
       objectReference: {fileID: 793757852}
     - target: {fileID: 4945079659811710976, guid: 783b889fb5c2c714d8ef5e8660eb565a, type: 3}
       propertyPath: m_Name
-      value: Location1
+      value: Location1Stage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

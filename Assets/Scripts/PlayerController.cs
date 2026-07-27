@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     // private int camIndex = 0;
 
     private InputAction ia_camUp;
+    private InputAction ia_click;
 
     private void OnEnable()
     {
@@ -38,7 +39,12 @@ public class PlayerController : MonoBehaviour
         //ia_camUp.performed += CamUp;
         //ia_camUp.Enable();
 
-       
+        ia_click = InputSystem.actions.FindActionMap("Player").FindAction("Click");
+        ia_click.performed += Click;
+        ia_click.Enable();
+
+
+
     }
 
     // Update is called once per frame
@@ -63,4 +69,11 @@ public class PlayerController : MonoBehaviour
 
     //    camIndex++;
     //}
+
+    private void Click(InputAction.CallbackContext context)
+    {
+        Debug.Log("Click!");
+
+
+    }
 }
