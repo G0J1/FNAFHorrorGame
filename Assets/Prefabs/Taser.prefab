@@ -100,6 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2683192307582246178}
   - component: {fileID: 1729565330508113571}
+  - component: {fileID: 7559144018698282400}
   m_Layer: 0
   m_Name: Taser
   m_TagString: Untagged
@@ -144,3 +145,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.45, y: 0.28, z: 0.65}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7559144018698282400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9036163046603984575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8896f9c77a83934eb0e6271ac6ff74d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'

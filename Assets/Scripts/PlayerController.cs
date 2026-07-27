@@ -80,6 +80,10 @@ public class PlayerController : MonoBehaviour
         {
             string hitObject = hit.collider.gameObject.name;
             Debug.Log("Hit object: " + hitObject);
+            if (hit.collider.gameObject.TryGetComponent<IInteractable>(out IInteractable interactable))
+            {
+                interactable.Interact();
+            }
         }
 
     }
