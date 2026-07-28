@@ -2364,7 +2364,7 @@ MonoBehaviour:
     meshQuery:
       layers: 33554440
       maskAndChannels: 8
-    surfaceParameter: 40548
+    surfaceParameter: 40556
     meshQueryIndex: 2
     subMeshQueryIndex: 0
     geometryHashValue: -8372286134756830272
@@ -9626,7 +9626,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 40406
+    surfaceParameter: 40414
     meshQueryIndex: 1
     subMeshQueryIndex: 0
     geometryHashValue: -8372286134756830272
@@ -11067,6 +11067,10 @@ PrefabInstance:
     - target: {fileID: 4945079659811710976, guid: 783b889fb5c2c714d8ef5e8660eb565a, type: 3}
       propertyPath: m_Name
       value: Location8Off2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945079659811710976, guid: 783b889fb5c2c714d8ef5e8660eb565a, type: 3}
+      propertyPath: m_TagString
+      value: StalkingLocation
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

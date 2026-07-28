@@ -35,6 +35,11 @@ public class Taser : MonoBehaviour, IInteractable
             yield return new WaitForSeconds(2.0f);
             player.CameraLookFront(0.5f);
         }
+        else if (rusty.currentPhase == RustyController.RustyPhase.StalkingPhase)
+        {
+            yield return new WaitForSeconds(0.5f);
+            rusty.Jumpscare();
+        }
         else
         {
             // short the breaker if rusty not in office

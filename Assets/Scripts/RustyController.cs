@@ -6,6 +6,7 @@ public class RustyController : MonoBehaviour
     public enum RustyPhase
     {
         MovementPhase,
+        StalkingPhase,
         AttackPhase
     }
 
@@ -46,10 +47,8 @@ public class RustyController : MonoBehaviour
     private void StartNextMovementTimer()
     {
         if (currentPhase == RustyPhase.AttackPhase) { return; }
-
         float randomTime = GenerateRandomTime();
         Invoke(nameof(BeginMovementAction), randomTime);
-        currentPhase = RustyPhase.MovementPhase;
     }
 
     private void DisableMovement()
@@ -84,6 +83,10 @@ public class RustyController : MonoBehaviour
             currentPhase = RustyPhase.AttackPhase;
             Invoke(nameof(Jumpscare), 10.0f);
         }
+        else if (currentLocation.CompareTag("StalkingLocation"))
+        {
+            currentPhase = RustyPhase.StalkingPhase;
+        }
 
     }
     
@@ -111,9 +114,10 @@ public class RustyController : MonoBehaviour
         
     }
 
-    private void Jumpscare()
+    public void Jumpscare()
     {
         Debug.Log("JUMPSCARE!!!!!");
+        DisableMovement();
         player.CameraLookBehind(0.5f);
     }
 
