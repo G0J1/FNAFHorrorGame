@@ -8,6 +8,7 @@ public class Taser : MonoBehaviour, IInteractable
     [SerializeField] private PlayerController player;
 
     [SerializeField] private Boolean isZapping;
+    [SerializeField] private float drainAmount = 30.0f;
 
     void Start()
     {
@@ -17,9 +18,13 @@ public class Taser : MonoBehaviour, IInteractable
     {
         if (!isZapping)
         {
-            Debug.Log("TAZE!!!!");
-            isZapping = true;
-            StartCoroutine(TazeRoutine());
+            if (PowerManager.gameInstance.GetCurrentPower() > drainAmount)
+            {
+                Debug.Log("TAZE!!!!");
+                isZapping = true;
+                StartCoroutine(TazeRoutine());
+                PowerManager.gameInstance.DrainPower(drainAmount);
+            }
             
         }
     }

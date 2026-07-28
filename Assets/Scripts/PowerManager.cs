@@ -7,7 +7,24 @@ public class PowerManager : MonoBehaviour
     [SerializeField] private float maxPower = 99.99f;
     [SerializeField] private float currentPower = 99.99f;
     [SerializeField] private float passiveDrainRate = 2.0f;
+    [SerializeField] private float camDrainRate = 2.0f;
     [SerializeField] private TextMeshProUGUI powerTextGUI;
+
+
+    public static PowerManager gameInstance {  get; private set; }
+
+    private void Awake()
+    {
+        if (gameInstance == null)
+        {
+            gameInstance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,10 +39,26 @@ public class PowerManager : MonoBehaviour
         
     }
 
-    public void PassiveDrain()
+    private void PassiveDrain()
     {
         DrainPower(passiveDrainRate);
         UpdatePowerTextGUI(currentPower);
+    }
+
+    private void CamDrain()
+    {
+        DrainPower(camDrainRate);
+        UpdatePowerTextGUI(currentPower);
+    }
+
+    public void BeginCamDrain()
+    {
+        InvokeRepeating(nameof(CamDrain), 1.0f, 1.0f);
+    }
+
+    public void CancelCamDrain()
+    {
+        CancelInvoke(nameof(CamDrain));
     }
 
     public void DrainPower(float toDrain)
@@ -34,6 +67,10 @@ public class PowerManager : MonoBehaviour
         {
             currentPower -= toDrain;
             UpdatePowerTextGUI(currentPower);
+        }
+        else if (currentPower < 0)
+        {
+            CamToggleManager.camToggleManagerInstance.CloseCams();
         }
     }
 
@@ -47,8 +84,16 @@ public class PowerManager : MonoBehaviour
        
     }
 
-    public void UpdatePowerTextGUI(float updatedPower)
+    public float GetCurrentPower()
+    {
+        return currentPower;
+    }
+
+
+    private void UpdatePowerTextGUI(float updatedPower)
     {
         powerTextGUI.text = "Power left: " + updatedPower.ToString() + "%";
     }
+
+
 }
