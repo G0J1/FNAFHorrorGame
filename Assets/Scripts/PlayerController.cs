@@ -34,15 +34,9 @@ public class PlayerController : MonoBehaviour
 
         Cursor.visible = true;
 
-        //securityCams = GameObject.FindGameObjectsWithTag("Cam");
-        //Debug.Log(securityCams.Length);
-
-        //ia_camUp = InputSystem.actions.FindActionMap("Player").FindAction("CamUp");
-        //ia_camUp.performed += CamUp;
-        //ia_camUp.Enable();
-
         ia_click = InputSystem.actions.FindActionMap("Player").FindAction("Click");
-        ia_click.performed += Click;
+        ia_click.started += OnClickStart;
+        ia_click.canceled += OnClickEnd;
         ia_click.Enable();
 
 
@@ -55,29 +49,11 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    //private void CamUp(InputAction.CallbackContext context)
-    //{
-    //    Debug.Log("increasing cam active!");
-    //    fppCamera.enabled = false;
-    //    if (securityCams[camIndex] != null)
-    //    {
-    //        if (camIndex > 0)
-    //        {
-    //            securityCams[camIndex - 1].GetComponent<Camera>().enabled = false;
-    //        }
-    //        securityCams[camIndex].GetComponent<Camera>().enabled = true;
-    //    }
-        
-
-    //    camIndex++;
-    //}
-
-    private void Click(InputAction.CallbackContext context)
+    private void HandleClickTrace()
     {
-        Debug.Log("Click!");
         RaycastHit hit;
         Vector2 mousePos = Mouse.current.position.value;
-        Ray rayOrign = Camera.main.ScreenPointToRay(mousePos);
+        Ray rayOrign = fppCamera.ScreenPointToRay(mousePos);
         if (Physics.Raycast(rayOrign, out hit))
         {
             string hitObject = hit.collider.gameObject.name;
@@ -87,7 +63,18 @@ public class PlayerController : MonoBehaviour
                 interactable.Interact();
             }
         }
+    }
 
+    private void OnClickStart(InputAction.CallbackContext context)
+    {
+        Debug.Log("Click!");
+        InvokeRepeating(nameof(HandleClickTrace), 0.0f, 0.5f);
+
+    }
+
+    private void OnClickEnd(InputAction.CallbackContext context)
+    {
+        CancelInvoke(nameof(HandleClickTrace));
     }
 
     public void CameraLookBehind(float rotSpeed)

@@ -76,7 +76,7 @@ public class PowerManager : MonoBehaviour
 
     public void AddPower(float toAdd)
     {
-        if (currentPower < maxPower)
+        if (currentPower + toAdd < maxPower)
         {
             currentPower += toAdd;
             UpdatePowerTextGUI(currentPower);

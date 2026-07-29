@@ -7930,7 +7930,7 @@ PrefabInstance:
       objectReference: {fileID: 1814630584}
     - target: {fileID: 3102661282727517865, guid: f142e8544f5b6844c9c46fc41bc40489, type: 3}
       propertyPath: passiveDrainRate
-      value: 1.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5606994573707333099, guid: f142e8544f5b6844c9c46fc41bc40489, type: 3}
       propertyPath: m_Name
