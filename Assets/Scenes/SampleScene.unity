@@ -2410,7 +2410,7 @@ MonoBehaviour:
     meshQuery:
       layers: 33554440
       maskAndChannels: 8
-    surfaceParameter: 41124
+    surfaceParameter: 40568
     meshQueryIndex: 2
     subMeshQueryIndex: 0
     geometryHashValue: -9222481488419692833
@@ -3574,8 +3574,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 93}
-  m_SizeDelta: {x: 1288.404, y: 112.43}
+  m_AnchoredPosition: {x: 0, y: 67.628296}
+  m_SizeDelta: {x: 1250.3464, y: 61.6867}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &607281136
 MonoBehaviour:
@@ -4250,7 +4250,7 @@ MonoBehaviour:
     meshQuery:
       layers: 33554440
       maskAndChannels: 8
-    surfaceParameter: 41124
+    surfaceParameter: 40568
     meshQueryIndex: 2
     subMeshQueryIndex: 0
     geometryHashValue: -9222481488419692833
@@ -9684,7 +9684,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 41102
+    surfaceParameter: 40426
     meshQueryIndex: 1
     subMeshQueryIndex: 0
     geometryHashValue: -9222481488419692833
@@ -9752,7 +9752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6401070204726744620, guid: eda7d20cbf2072144b81c2820b43f552, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6401070204726744620, guid: eda7d20cbf2072144b81c2820b43f552, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9760,7 +9760,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6401070204726744620, guid: eda7d20cbf2072144b81c2820b43f552, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6401070204726744620, guid: eda7d20cbf2072144b81c2820b43f552, type: 3}
       propertyPath: m_AnchorMin.y
@@ -9768,7 +9768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6401070204726744620, guid: eda7d20cbf2072144b81c2820b43f552, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 791.214
+      value: 791.21387
       objectReference: {fileID: 0}
     - target: {fileID: 6401070204726744620, guid: eda7d20cbf2072144b81c2820b43f552, type: 3}
       propertyPath: m_SizeDelta.y
@@ -9816,7 +9816,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6401070204726744620, guid: eda7d20cbf2072144b81c2820b43f552, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2164.393
+      value: -395.60693
       objectReference: {fileID: 0}
     - target: {fileID: 6401070204726744620, guid: eda7d20cbf2072144b81c2820b43f552, type: 3}
       propertyPath: m_AnchoredPosition.y
