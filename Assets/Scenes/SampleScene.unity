@@ -12244,7 +12244,7 @@ PrefabInstance:
     - target: {fileID: 999855791773287460, guid: 9eac09bc1c593ac4586c467c1846a4fd, type: 3}
       propertyPath: currentLocation
       value: 
-      objectReference: {fileID: 1302839605}
+      objectReference: {fileID: 24905312}
     - target: {fileID: 3114263669358461830, guid: 9eac09bc1c593ac4586c467c1846a4fd, type: 3}
       propertyPath: m_Name
       value: Rusty

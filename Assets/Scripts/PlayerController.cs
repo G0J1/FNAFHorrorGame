@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     {
         fppCamera.enabled = true;
 
+        
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
 
         ia_click = InputSystem.actions.FindActionMap("Player").FindAction("Click");
@@ -88,7 +90,8 @@ public class PlayerController : MonoBehaviour
     {
         cmCamera.enabled = true;
         inputActions.FindActionMap("Player").Enable();
-        Cursor.lockState = CursorLockMode.None;
+        /*Cursor.lockState = CursorLockMode.None;*/
+        Cursor.lockState = CursorLockMode.Confined;
         fppCamera.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
     }
 }
