@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Location : MonoBehaviour
+public class AnimLocation : MonoBehaviour
 {
-    public Location[] nextLocations;
+    public AnimLocation[] nextLocations;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

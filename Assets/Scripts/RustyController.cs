@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.UIElements;
 
 public class RustyController : MonoBehaviour
@@ -10,7 +11,7 @@ public class RustyController : MonoBehaviour
         AttackPhase
     }
 
-    public Location currentLocation;
+    public AnimLocation currentLocation;
     public RustyPhase currentPhase;
 
     [SerializeField] private GameObject startingPos;
@@ -22,6 +23,8 @@ public class RustyController : MonoBehaviour
     {
         InvokeRepeating(nameof(IncrementAILevel), 20.0f, 20.0f);
         ResetPosition();
+
+        // SetPosition(currentLocation);
     }
 
     // Update is called once per frame
@@ -36,11 +39,17 @@ public class RustyController : MonoBehaviour
         CancelInvoke(nameof(Jumpscare));
     }
 
+    public void SetPosition(AnimLocation setPosition)
+    {
+        gameObject.transform.position = setPosition.transform.position;
+        gameObject.transform.rotation = setPosition.transform.rotation;
+    }
+
     public void ResetPosition()
     {
         currentPhase = RustyPhase.MovementPhase;
-        currentLocation = startingPos.GetComponent<Location>();
-        gameObject.transform.position = startingPos.transform.position;
+        currentLocation = startingPos.GetComponent<AnimLocation>();
+        SetPosition(currentLocation);
         Invoke(nameof(StartNextMovementTimer), 10.0f);
     }
 
@@ -60,12 +69,12 @@ public class RustyController : MonoBehaviour
 
     private void IncrementLocation()
     {
-        Location[] possibleLocations = currentLocation.GetComponent<Location>().nextLocations;
-        Location nextLocation = currentLocation;
+        AnimLocation[] possibleLocations = currentLocation.GetComponent<AnimLocation>().nextLocations;
+        AnimLocation nextLocation = currentLocation;
 
         if (possibleLocations.Length == 1)
         {
-            nextLocation = currentLocation.GetComponent<Location>().nextLocations[0];
+            nextLocation = currentLocation.GetComponent<AnimLocation>().nextLocations[0];
         }
         else if (possibleLocations.Length > 1)
         {
@@ -74,7 +83,7 @@ public class RustyController : MonoBehaviour
 
         if (nextLocation != null)
         {
-            gameObject.transform.position = nextLocation.transform.position;
+            SetPosition(nextLocation);
             currentLocation = nextLocation;
         }
 
