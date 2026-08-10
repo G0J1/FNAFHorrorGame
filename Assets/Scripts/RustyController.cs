@@ -137,6 +137,7 @@ public class RustyController : MonoBehaviour
 
     public void Jumpscare()
     {
+        CamToggleManager.camToggleManagerInstance.CloseCams();
         Debug.Log("JUMPSCARE!!!!!");
         DisableMovement();
         player.CameraLookBehind(0.5f);
