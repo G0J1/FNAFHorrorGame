@@ -32,7 +32,7 @@ public class Taser : MonoBehaviour, IInteractable
     private IEnumerator TazeRoutine()
     {
         player.CameraLookBehind(5.0f);
-        if (rusty.currentPhase == RustyController.RustyPhase.AttackPhase)
+        if (rusty.GetCurrentPhase() == RustyController.RustyPhase.AttackPhase)
         {
             // taze rsuty and revert him back to stage
             yield return new WaitForSeconds(2.0f);
@@ -40,7 +40,7 @@ public class Taser : MonoBehaviour, IInteractable
             yield return new WaitForSeconds(2.0f);
             player.CameraLookFront(0.5f);
         }
-        else if (rusty.currentPhase == RustyController.RustyPhase.StalkingPhase)
+        else if (rusty.GetCurrentPhase() == RustyController.RustyPhase.StalkingPhase)
         {
             yield return new WaitForSeconds(0.5f);
             rusty.Jumpscare();
