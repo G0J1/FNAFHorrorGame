@@ -44,6 +44,10 @@ public class TimeManager : MonoBehaviour
             hours += 1;
         }
         DisplayTime();
+        if (hours == 6)
+        {
+            GameSceneManager.gameInstance.TriggerWinCondition();
+        }
     }
 
     private void DisplayTime()

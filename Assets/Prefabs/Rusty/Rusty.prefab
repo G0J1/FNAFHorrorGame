@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2d813ffb0ffdf49819a63564a7781b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  currentLocation: {fileID: 0}
   currentPhase: 0
   startingPos: {fileID: 0}
+  currentLocation: {fileID: 0}
+  jumpscarePos: {fileID: 0}
   aILevel: 0
   player: {fileID: 0}
   animController: {fileID: 394063249625338570}
@@ -112,10 +113,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -150009337949190703, guid: 18ddc51be0faf434d918657c35cffc90, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b346e8819c4702478569e195549ed6c, type: 2}
     - target: {fileID: 919132149155446097, guid: 18ddc51be0faf434d918657c35cffc90, type: 3}
       propertyPath: m_Name
       value: Rusty2
       objectReference: {fileID: 0}
+    - target: {fileID: 947034460753255316, guid: 18ddc51be0faf434d918657c35cffc90, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b346e8819c4702478569e195549ed6c, type: 2}
+    - target: {fileID: 2105694637702158544, guid: 18ddc51be0faf434d918657c35cffc90, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b346e8819c4702478569e195549ed6c, type: 2}
+    - target: {fileID: 2321523695958950486, guid: 18ddc51be0faf434d918657c35cffc90, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b346e8819c4702478569e195549ed6c, type: 2}
+    - target: {fileID: 8335907118470890241, guid: 18ddc51be0faf434d918657c35cffc90, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b346e8819c4702478569e195549ed6c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

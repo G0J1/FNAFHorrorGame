@@ -64,14 +64,18 @@ public class CamToggleManager : MonoBehaviour, IPointerEnterHandler
 
     public void CloseCams()
     {
-        owner.GetComponentInChildren<TextMeshProUGUI>().text = "Open Cams";
-        camsActivated = false;
-        secCamCanvas.enabled = false;
-        // enable player cam
-        player.GetComponentInChildren<Camera>().enabled = true;
-        // disable current cam
-        // currentActiveCam.enabled = false;
-        SecCamController.GetCurrentActiveCamera().enabled = false;
-        PowerManager.gameInstance.CancelCamDrain();
+        if (SecCamController.GetCurrentActiveCamera() != null)
+        {
+            owner.GetComponentInChildren<TextMeshProUGUI>().text = "Open Cams";
+            camsActivated = false;
+            secCamCanvas.enabled = false;
+            // enable player cam
+            player.GetComponentInChildren<Camera>().enabled = true;
+            // disable current cam
+            // currentActiveCam.enabled = false;
+            SecCamController.GetCurrentActiveCamera().enabled = false;
+            PowerManager.gameInstance.CancelCamDrain();
+        }
+        
     }
 }

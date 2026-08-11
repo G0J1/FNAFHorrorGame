@@ -143,6 +143,7 @@ public class RustyController : MonoBehaviour
         player.CameraLookBehind(0.5f);
         SetPosition(jumpscarePos);
         animController.Play(jumpscareAnim, 0, 0.0f);
+        GameSceneManager.gameInstance.TriggerPlayerDeath();
     }
 
     private float GenerateRandomTime()
