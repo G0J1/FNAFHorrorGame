@@ -70,6 +70,17 @@
                 },
                 {
                     "name": "",
+                    "id": "b3436298-162b-411b-be8e-cce49261dee5",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "670b0f83-78b0-4886-8e0e-dbe1b7f6c74d",
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",

@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class PlayerController : MonoBehaviour
 {
     public Camera fppCamera;
     public InputActionAsset inputActions;
-    public CinemachineCamera cmCamera;
-   
 
-    private GameObject[] securityCams;
-    // private int camIndex = 0;
+    [SerializeField] private float cameraRotationBound = 100.0f;
+    [SerializeField] private float cameraRotationSpeed = 1.0f;
+    [SerializeField] private bool isCamInCutscene = false;
 
-    // private InputAction ia_camUp;
     private InputAction ia_click;
+    private InputAction ia_look;
 
     private void OnEnable()
     {
@@ -41,6 +41,10 @@ public class PlayerController : MonoBehaviour
         ia_click.canceled += OnClickEnd;
         ia_click.Enable();
 
+        ia_look = InputSystem.actions.FindActionMap("Player").FindAction("Look");
+       /* ia_look.performed += CameraScroll;*/
+        ia_look.Enable();
+
 
 
     }
@@ -48,7 +52,27 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!isCamInCutscene)
+        {
+            Vector2 mousePos = ia_look.ReadValue<Vector2>();
+            Debug.Log($"Mouse moved: {mousePos}");
+            float xPos = mousePos.x;
+            Debug.Log($"X position: {xPos}");
+            float scWidth = Screen.width;
+            Debug.Log($"Screen width: {scWidth}");
+            float halfscWidth = scWidth / 2;
+            float adjustedMouseX = xPos - halfscWidth;
+            Debug.Log($"Adjusted mouse pos: {adjustedMouseX}");
+
+            if (adjustedMouseX > cameraRotationBound)
+            {
+                fppCamera.transform.Rotate(new Vector3(0, cameraRotationSpeed * Time.deltaTime, 0));
+            }
+            else if (adjustedMouseX < -(cameraRotationBound))
+            {
+                fppCamera.transform.Rotate(new Vector3(0, -(cameraRotationSpeed * Time.deltaTime), 0));
+            }
+        }
     }
 
     private void HandleClickTrace()
@@ -79,19 +103,42 @@ public class PlayerController : MonoBehaviour
         CancelInvoke(nameof(HandleClickTrace));
     }
 
+   /* private void CameraScroll(InputAction.CallbackContext context)
+    {
+        Vector2 delta = context.ReadValue<Vector2>();
+        Debug.Log($"Mouse moved: {delta}");
+        float xPos = delta.x;
+        Debug.Log($"X position: {xPos}");
+        float scWidth = Screen.width;
+        Debug.Log($"Screen width: {scWidth}");
+        float halfscWidth = scWidth / 2;
+        float adjustedMouseX = xPos - halfscWidth;
+        Debug.Log($"Adjusted mouse pos: {adjustedMouseX}");
+
+        if (adjustedMouseX > cameraRotationBound )
+        {
+            fppCamera.transform.Rotate(new Vector3(0, cameraRotationSpeed * Time.deltaTime, 0));
+        }
+        else if (adjustedMouseX < -cameraRotationBound)
+        {
+            fppCamera.transform.Rotate(new Vector3(0, -(cameraRotationSpeed * Time.), 0f));
+        }
+        
+    }*/
+
     public void CameraLookBehind(float rotSpeed)
     {
-        cmCamera.enabled = false;
         inputActions.FindActionMap("Player").Disable();
         Cursor.lockState = CursorLockMode.Locked;
-        fppCamera.transform.localRotation = Quaternion.Euler(0f, -145.08f, 0f);
+        fppCamera.transform.localRotation = Quaternion.Euler(0f, -180, 0f);
+        isCamInCutscene = true;
     }
     public void CameraLookFront(float rotSpeed)
     {
-        cmCamera.enabled = true;
         inputActions.FindActionMap("Player").Enable();
         /*Cursor.lockState = CursorLockMode.None;*/
         Cursor.lockState = CursorLockMode.Confined;
         fppCamera.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+        isCamInCutscene = false;
     }
 }
