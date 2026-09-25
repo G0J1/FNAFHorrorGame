@@ -13,11 +13,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float cameraRotationSpeed = 1.0f;
     [SerializeField] private bool isCamInCutscene = false;
     [SerializeField] private Animator animController;
-    [SerializeField] private Quaternion backQuart = Quaternion.Euler(0f, 270.0f, 0f);
-    [SerializeField] private Quaternion frontQuart = Quaternion.Euler(0f, 0f, 0f);
+    private Quaternion backQuart = Quaternion.Euler(0f, 180f, 0f);
+    private Quaternion frontQuart = Quaternion.Euler(0f, 0f, 0f);
 
-    [SerializeField] private string tazerEnterAnim = "PlayerTazeStart";
-    [SerializeField] private string tazerExitAnim = "PlayerTazeEnd";
+    private string tazerEnterAnim = "PlayerTazeStart";
+    private string tazerExitAnim = "PlayerTazeEnd";
+
+    [SerializeField] private GameObject tazer;
 
     private InputAction ia_click;
     private InputAction ia_look;

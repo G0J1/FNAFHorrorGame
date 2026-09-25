@@ -2368,7 +2368,7 @@ MonoBehaviour:
     meshQuery:
       layers: 33554440
       maskAndChannels: 8
-    surfaceParameter: 41478
+    surfaceParameter: 41480
     meshQueryIndex: 2
     subMeshQueryIndex: 0
     geometryHashValue: -9222481488419692833
@@ -4208,7 +4208,7 @@ MonoBehaviour:
     meshQuery:
       layers: 33554440
       maskAndChannels: 8
-    surfaceParameter: 41478
+    surfaceParameter: 41480
     meshQueryIndex: 2
     subMeshQueryIndex: 0
     geometryHashValue: -9222481488419692833
@@ -12697,6 +12697,10 @@ PrefabInstance:
     - target: {fileID: 2793960896689980377, guid: 5dc205c1ab8cd734db2c20f5102e1bac, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733166010344536227, guid: 5dc205c1ab8cd734db2c20f5102e1bac, type: 3}
+      propertyPath: backQuart.y
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 4733166010344536227, guid: 5dc205c1ab8cd734db2c20f5102e1bac, type: 3}
       propertyPath: secCamCanvas
