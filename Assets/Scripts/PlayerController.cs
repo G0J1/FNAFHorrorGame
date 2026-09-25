@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float cameraRotationSpeed = 1.0f;
     [SerializeField] private bool isCamInCutscene = false;
     [SerializeField] private Animator animController;
-    private Quaternion backQuart = Quaternion.Euler(0f, 180f, 0f);
+    private Quaternion backQuart = Quaternion.Euler(0f, 170f, 0f);
     private Quaternion frontQuart = Quaternion.Euler(0f, 0f, 0f);
 
     private string tazerEnterAnim = "PlayerTazeStart";
@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour
         ia_look = InputSystem.actions.FindActionMap("Player").FindAction("Look");
        /* ia_look.performed += CameraScroll;*/
         ia_look.Enable();
+
+        HideTazer();
 
 
 
@@ -175,6 +177,7 @@ public class PlayerController : MonoBehaviour
 
         if (activeRotationCoroutine != null) StopCoroutine(activeRotationCoroutine);
         activeRotationCoroutine = StartCoroutine(RotateTo(backQuart, 360.0f));
+        ShowTazer();
 
 
     }
@@ -186,6 +189,7 @@ public class PlayerController : MonoBehaviour
         animController.Play(tazerExitAnim, 0, 0);
         if (activeRotationCoroutine != null) StopCoroutine(activeRotationCoroutine);
         activeRotationCoroutine = StartCoroutine(RotateTo(frontQuart, 360.0f));
+        
 
     }
 
@@ -204,11 +208,22 @@ public class PlayerController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Confined;
             inputActions.FindActionMap("Player").Enable();
             isCamInCutscene = false;
+            HideTazer();
         }
 
 
 
 
 
+    }
+
+    private void HideTazer()
+    {
+        tazer.SetActive(false);
+    }
+
+    private void ShowTazer()
+    {
+        tazer.SetActive(true);
     }
 }

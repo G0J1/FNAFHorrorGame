@@ -12706,6 +12706,10 @@ PrefabInstance:
       propertyPath: secCamCanvas
       value: 
       objectReference: {fileID: 678175108}
+    - target: {fileID: 4733166010344536227, guid: 5dc205c1ab8cd734db2c20f5102e1bac, type: 3}
+      propertyPath: tazerExitAnim
+      value: PlayerTazeEnd
+      objectReference: {fileID: 0}
     - target: {fileID: 6142711907254750211, guid: 5dc205c1ab8cd734db2c20f5102e1bac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
