@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,9 +12,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float cameraRotationBound = 100.0f;
     [SerializeField] private float cameraRotationSpeed = 1.0f;
     [SerializeField] private bool isCamInCutscene = false;
+    [SerializeField] private Animator animController;
+    [SerializeField] private Quaternion backQuart = Quaternion.Euler(0f, 270.0f, 0f);
+    [SerializeField] private Quaternion frontQuart = Quaternion.Euler(0f, 0f, 0f);
+
+    [SerializeField] private string tazerEnterAnim = "PlayerTazeStart";
+    [SerializeField] private string tazerExitAnim = "PlayerTazeEnd";
 
     private InputAction ia_click;
     private InputAction ia_look;
+
+    private Coroutine activeRotationCoroutine;
 
     private void OnEnable()
     {
@@ -130,15 +137,76 @@ public class PlayerController : MonoBehaviour
     {
         inputActions.FindActionMap("Player").Disable();
         Cursor.lockState = CursorLockMode.Locked;
-        fppCamera.transform.localRotation = Quaternion.Euler(0f, -180, 0f);
+        /*fppCamera.transform.localRotation = Quaternion.Euler(0f, -180, 0f);*/
         isCamInCutscene = true;
+        Quaternion currentRot = fppCamera.transform.localRotation;
+        Quaternion backQuart = Quaternion.Euler(0f, -180.0f, 0f);
+        fppCamera.transform.localRotation = Quaternion.RotateTowards(currentRot, backQuart, rotSpeed*Time.deltaTime);
+
     }
     public void CameraLookFront(float rotSpeed)
     {
-        inputActions.FindActionMap("Player").Enable();
-        /*Cursor.lockState = CursorLockMode.None;*/
+        //inputActions.FindActionMap("Player").Enable();
+        Cursor.lockState = CursorLockMode.None;
         Cursor.lockState = CursorLockMode.Confined;
-        fppCamera.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+
         isCamInCutscene = false;
+
+        Quaternion currentRot = fppCamera.transform.localRotation;
+        fppCamera.transform.localRotation = Quaternion.RotateTowards(currentRot, frontQuart, rotSpeed);
+
+    }
+
+    public void BeginTaze()
+    {
+        StartCoroutine(PerformTaze());
+    }
+
+    public IEnumerator PerformTaze()
+    {
+        //CameraLookBehind(50f);
+        inputActions.FindActionMap("Player").Disable();
+        Cursor.lockState = CursorLockMode.Locked;
+        isCamInCutscene = true;
+        animController.Play(tazerEnterAnim, 0, 0);
+        yield return new WaitForSeconds(1.3f);
+
+        if (activeRotationCoroutine != null) StopCoroutine(activeRotationCoroutine);
+        activeRotationCoroutine = StartCoroutine(RotateTo(backQuart, 360.0f));
+
+
+    }
+
+    public void endTaze()
+    {
+        /*Cursor.lockState = CursorLockMode.Confined;
+        isCamInCutscene = false;*/
+        animController.Play(tazerExitAnim, 0, 0);
+        if (activeRotationCoroutine != null) StopCoroutine(activeRotationCoroutine);
+        activeRotationCoroutine = StartCoroutine(RotateTo(frontQuart, 360.0f));
+
+    }
+
+
+    private IEnumerator RotateTo(Quaternion endRot, float speed)
+    {
+        float step = speed * Time.deltaTime;
+        while (Quaternion.Angle(fppCamera.transform.localRotation, endRot) > 0.0f)
+        {
+            fppCamera.transform.localRotation =  Quaternion.RotateTowards(fppCamera.transform.localRotation, endRot, step);
+            yield return null;
+        }
+
+        if (endRot == frontQuart)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            inputActions.FindActionMap("Player").Enable();
+            isCamInCutscene = false;
+        }
+
+
+
+
+
     }
 }

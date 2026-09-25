@@ -31,14 +31,14 @@ public class Taser : MonoBehaviour, IInteractable
 
     private IEnumerator TazeRoutine()
     {
-        player.CameraLookBehind(5.0f);
+        player.BeginTaze();
         if (rusty.GetCurrentPhase() == RustyController.RustyPhase.AttackPhase)
         {
             // taze rsuty and revert him back to stage
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(3.0f);
             rusty.GetTazed();
-            yield return new WaitForSeconds(2.0f);
-            player.CameraLookFront(0.5f);
+            yield return new WaitForSeconds(0.5f);
+            player.endTaze();
         }
         else if (rusty.GetCurrentPhase() == RustyController.RustyPhase.StalkingPhase)
         {
@@ -48,9 +48,10 @@ public class Taser : MonoBehaviour, IInteractable
         else
         {
             // short the breaker if rusty not in office
-            // if rusty in office but not close enough, rusty kills you
-            yield return new WaitForSeconds(2.0f);
-            player.CameraLookFront(0.5f);
+            /*player.CameraLookFront(0.5f);*/
+            PowerManager.gameInstance.DrainPower(100);
+            yield return new WaitForSeconds(4.0f);
+            player.endTaze();
         }
 
 
