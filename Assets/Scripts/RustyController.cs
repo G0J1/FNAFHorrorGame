@@ -29,6 +29,7 @@ public class RustyController : MonoBehaviour
         currentLocation = startingPos;
         InvokeRepeating(nameof(IncrementAILevel), 20.0f, 20.0f);
         ResetPosition();
+        animController.Play("1Stage1");
 
         // SetPosition(currentLocation);
     }
@@ -97,6 +98,14 @@ public class RustyController : MonoBehaviour
         {
             SetPosition(nextLocation);
             currentLocation = nextLocation;
+            if (currentLocation.GetAnimationName() != null) 
+            {
+                animController.Play(currentLocation.GetAnimationName());
+            }
+            else
+            {
+                animController.Play("0TPose");
+            }
         }
 
         if (currentLocation.CompareTag("AttackLocation"))

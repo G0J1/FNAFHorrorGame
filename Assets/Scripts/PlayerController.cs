@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float cameraRotationSpeed = 1.0f;
     [SerializeField] private bool isCamInCutscene = false;
     [SerializeField] private Animator animController;
-    private Quaternion backQuart = Quaternion.Euler(0f, 170f, 0f);
+    private Quaternion backQuart = Quaternion.Euler(0f, 180f, 0f);
+    private Quaternion tazeQuart = Quaternion.Euler(0f, 170f, 0f);
     private Quaternion frontQuart = Quaternion.Euler(0f, 0f, 0f);
 
     private string tazerEnterAnim = "PlayerTazeStart";
@@ -141,24 +142,18 @@ public class PlayerController : MonoBehaviour
     {
         inputActions.FindActionMap("Player").Disable();
         Cursor.lockState = CursorLockMode.Locked;
-        /*fppCamera.transform.localRotation = Quaternion.Euler(0f, -180, 0f);*/
         isCamInCutscene = true;
-        Quaternion currentRot = fppCamera.transform.localRotation;
-        Quaternion backQuart = Quaternion.Euler(0f, -180.0f, 0f);
-        fppCamera.transform.localRotation = Quaternion.RotateTowards(currentRot, backQuart, rotSpeed*Time.deltaTime);
+        if (activeRotationCoroutine != null) StopCoroutine(activeRotationCoroutine);
+        activeRotationCoroutine = StartCoroutine(RotateTo(backQuart, 360.0f));
 
     }
     public void CameraLookFront(float rotSpeed)
     {
-        //inputActions.FindActionMap("Player").Enable();
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.lockState = CursorLockMode.Confined;
-
-        isCamInCutscene = false;
-
-        Quaternion currentRot = fppCamera.transform.localRotation;
-        fppCamera.transform.localRotation = Quaternion.RotateTowards(currentRot, frontQuart, rotSpeed);
-
+        inputActions.FindActionMap("Player").Disable();
+        Cursor.lockState = CursorLockMode.Locked;
+        isCamInCutscene = true;
+        if (activeRotationCoroutine != null) StopCoroutine(activeRotationCoroutine);
+        activeRotationCoroutine = StartCoroutine(RotateTo(frontQuart, 360.0f));
     }
 
     public void BeginTaze()
@@ -168,7 +163,6 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator PerformTaze()
     {
-        //CameraLookBehind(50f);
         inputActions.FindActionMap("Player").Disable();
         Cursor.lockState = CursorLockMode.Locked;
         isCamInCutscene = true;
@@ -184,11 +178,10 @@ public class PlayerController : MonoBehaviour
 
     public void endTaze()
     {
-        /*Cursor.lockState = CursorLockMode.Confined;
-        isCamInCutscene = false;*/
+
         animController.Play(tazerExitAnim, 0, 0);
         if (activeRotationCoroutine != null) StopCoroutine(activeRotationCoroutine);
-        activeRotationCoroutine = StartCoroutine(RotateTo(frontQuart, 360.0f));
+        activeRotationCoroutine = StartCoroutine(RotateTo(tazeQuart, 360.0f));
         
 
     }

@@ -72,6 +72,7 @@ MonoBehaviour:
   player: {fileID: 0}
   isZapping: 0
   drainAmount: 30
+  mesh: {fileID: 8845343863758175758}
 --- !u!23 &6363520942572426723
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -193,5 +194,10 @@ PrefabInstance:
 --- !u!4 &8181679111610885300 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3b26445061c495141899cd4a1e43e750, type: 3}
+  m_PrefabInstance: {fileID: 8503236660386956127}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8845343863758175758 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3b26445061c495141899cd4a1e43e750, type: 3}
   m_PrefabInstance: {fileID: 8503236660386956127}
   m_PrefabAsset: {fileID: 0}

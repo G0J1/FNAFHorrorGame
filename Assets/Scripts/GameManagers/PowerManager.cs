@@ -89,6 +89,11 @@ public class PowerManager : MonoBehaviour
         return currentPower;
     }
 
+    public void SetPower(float amount)
+    {
+        currentPower = amount;
+    }
+
 
     private void UpdatePowerTextGUI(float updatedPower)
     {
