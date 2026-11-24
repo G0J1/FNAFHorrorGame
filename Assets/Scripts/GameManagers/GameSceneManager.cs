@@ -38,6 +38,7 @@ public class GameSceneManager : MonoBehaviour
     {
         Invoke(nameof(ShowDeathScreen), 2.0f);
         Invoke(nameof(ReturnToMainMenu), 5.0f);
+        SoundManager.gameInstance.DisableFan();
 
        
     }
@@ -46,6 +47,7 @@ public class GameSceneManager : MonoBehaviour
     {
         ShowWinScreen();
         Invoke(nameof(ReturnToMainMenu), 5.0f);
+        SoundManager.gameInstance.DisableFan();
     }
 
     private void ShowDeathScreen()

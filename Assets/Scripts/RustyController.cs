@@ -23,15 +23,17 @@ public class RustyController : MonoBehaviour
 
     [SerializeField] private string jumpscareAnim = "Jumpscare";
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource staticSource;
+    [SerializeField] private AudioClip jumpscareClip;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentLocation = startingPos;
         InvokeRepeating(nameof(IncrementAILevel), 20.0f, 20.0f);
         ResetPosition();
-        animController.Play("1Stage1");
-
-        // SetPosition(currentLocation);
+        staticSource.enabled = false;
     }
 
     // Update is called once per frame
@@ -57,7 +59,9 @@ public class RustyController : MonoBehaviour
     {
         currentPhase = RustyPhase.MovementPhase;
         currentLocation = startingPos;
+        animController.Play(currentLocation.GetAnimationName());
         SetPosition(currentLocation);
+        staticSource.enabled = false;
         Invoke(nameof(StartNextMovementTimer), 10.0f);
     }
 
@@ -112,10 +116,17 @@ public class RustyController : MonoBehaviour
         {
             currentPhase = RustyPhase.AttackPhase;
             Invoke(nameof(Jumpscare), 10.0f);
+            staticSource.volume = 0.7f;
+            staticSource.enabled = true;
+            
         }
         else if (currentLocation.CompareTag("StalkingLocation"))
         {
             currentPhase = RustyPhase.StalkingPhase;
+            staticSource.volume = 0.1f;
+            staticSource.enabled = true;
+            
+
         }
 
     }
@@ -129,7 +140,7 @@ public class RustyController : MonoBehaviour
             DisableMovement();
             
         }
-        else if (movementCheck <= aILevel)
+        else if (PowerManager.gameInstance.GetCurrentPower() == 0 || movementCheck <= aILevel)
         {
             IncrementLocation();
             StartNextMovementTimer();
@@ -146,12 +157,14 @@ public class RustyController : MonoBehaviour
 
     public void Jumpscare()
     {
+        staticSource.enabled = false;
         CamToggleManager.camToggleManagerInstance.CloseCams();
         Debug.Log("JUMPSCARE!!!!!");
         DisableMovement();
         player.CameraLookBehind(0.5f);
         SetPosition(jumpscarePos);
         animController.Play(jumpscareAnim, 0, 0.0f);
+        SoundManager.gameInstance.PlaySound(jumpscareClip);
         GameSceneManager.gameInstance.TriggerPlayerDeath();
     }
 

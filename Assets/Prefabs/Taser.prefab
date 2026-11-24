@@ -73,6 +73,7 @@ MonoBehaviour:
   isZapping: 0
   drainAmount: 30
   mesh: {fileID: 8845343863758175758}
+  zapSound: {fileID: 8300000, guid: 798cacb2842657c43a4d77372e6bd147, type: 3}
 --- !u!23 &6363520942572426723
 MeshRenderer:
   m_ObjectHideFlags: 0

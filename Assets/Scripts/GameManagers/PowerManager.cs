@@ -10,6 +10,9 @@ public class PowerManager : MonoBehaviour
     [SerializeField] private float camDrainRate = 2.0f;
     [SerializeField] private TextMeshProUGUI powerTextGUI;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip powerOutAudio;
+
 
     public static PowerManager gameInstance {  get; private set; }
 
@@ -29,7 +32,7 @@ public class PowerManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        UpdatePowerTextGUI(currentPower);
+        UpdatePowerTextGUI();
         InvokeRepeating(nameof(PassiveDrain), 1.0f, 1.0f);
     }
 
@@ -41,14 +44,18 @@ public class PowerManager : MonoBehaviour
 
     private void PassiveDrain()
     {
-        DrainPower(passiveDrainRate);
-        UpdatePowerTextGUI(currentPower);
+        if (currentPower > 0)
+        {
+            DrainPower(passiveDrainRate);
+            UpdatePowerTextGUI();
+        }
+        
     }
 
     private void CamDrain()
     {
         DrainPower(camDrainRate);
-        UpdatePowerTextGUI(currentPower);
+        UpdatePowerTextGUI();
     }
 
     public void BeginCamDrain()
@@ -66,11 +73,12 @@ public class PowerManager : MonoBehaviour
         if (currentPower > 0)
         {
             currentPower -= toDrain;
-            UpdatePowerTextGUI(currentPower);
+            UpdatePowerTextGUI();
         }
         else if (currentPower < 0)
         {
             CamToggleManager.camToggleManagerInstance.CloseCams();
+            OnPowerDown();
         }
     }
 
@@ -79,8 +87,13 @@ public class PowerManager : MonoBehaviour
         if (currentPower + toAdd < maxPower)
         {
             currentPower += toAdd;
-            UpdatePowerTextGUI(currentPower);
+            UpdatePowerTextGUI();
+            if (!(SoundManager.gameInstance.fanActive))
+            {
+                SoundManager.gameInstance.EnableFan();
+            }
         }
+
        
     }
 
@@ -92,12 +105,43 @@ public class PowerManager : MonoBehaviour
     public void SetPower(float amount)
     {
         currentPower = amount;
+        if (amount == 0)
+        {
+            OnPowerDown();
+        }
+        else if (amount > 0)
+        {
+            if (!(SoundManager.gameInstance.fanActive))
+            {
+                SoundManager.gameInstance.EnableFan();
+            }
+        }
     }
 
 
-    private void UpdatePowerTextGUI(float updatedPower)
+    private void OnPowerDown()
     {
-        powerTextGUI.text = "Power left: " + updatedPower.ToString() + "%";
+        UpdatePowerTextGUI();
+        if (powerOutAudio != null)
+        {
+            SoundManager.gameInstance.PlaySound(powerOutAudio);
+            SoundManager.gameInstance.DisableFan();
+        }
+    }
+
+    private void UpdatePowerTextGUI()
+    {
+        powerTextGUI.text = "Power left: " + PowerToString() + "%";
+    }
+
+    private string PowerToString()
+    {
+        int powerInt = (int)currentPower;
+        if (powerInt < 0)
+        {
+            powerInt = 0;
+        }
+        return powerInt.ToString();
     }
 
 

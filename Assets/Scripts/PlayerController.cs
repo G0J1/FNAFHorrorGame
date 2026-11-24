@@ -67,14 +67,14 @@ public class PlayerController : MonoBehaviour
         if (!isCamInCutscene)
         {
             Vector2 mousePos = ia_look.ReadValue<Vector2>();
-            Debug.Log($"Mouse moved: {mousePos}");
+           /* Debug.Log($"Mouse moved: {mousePos}");*/
             float xPos = mousePos.x;
-            Debug.Log($"X position: {xPos}");
+            /*Debug.Log($"X position: {xPos}");*/
             float scWidth = Screen.width;
-            Debug.Log($"Screen width: {scWidth}");
+            /*Debug.Log($"Screen width: {scWidth}");*/
             float halfscWidth = scWidth / 2;
             float adjustedMouseX = xPos - halfscWidth;
-            Debug.Log($"Adjusted mouse pos: {adjustedMouseX}");
+            /*Debug.Log($"Adjusted mouse pos: {adjustedMouseX}");*/
 
             if (adjustedMouseX > cameraRotationBound)
             {
@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1.3f);
 
         if (activeRotationCoroutine != null) StopCoroutine(activeRotationCoroutine);
-        activeRotationCoroutine = StartCoroutine(RotateTo(backQuart, 360.0f));
+        activeRotationCoroutine = StartCoroutine(RotateTo(tazeQuart, 360.0f));
         ShowTazer();
 
 
@@ -178,10 +178,9 @@ public class PlayerController : MonoBehaviour
 
     public void endTaze()
     {
-
         animController.Play(tazerExitAnim, 0, 0);
         if (activeRotationCoroutine != null) StopCoroutine(activeRotationCoroutine);
-        activeRotationCoroutine = StartCoroutine(RotateTo(tazeQuart, 360.0f));
+        activeRotationCoroutine = StartCoroutine(RotateTo(frontQuart, 360.0f));
         
 
     }
@@ -203,11 +202,6 @@ public class PlayerController : MonoBehaviour
             isCamInCutscene = false;
             HideTazer();
         }
-
-
-
-
-
     }
 
     private void HideTazer()
